@@ -1,3 +1,5 @@
+require 'byebug'
+
 class Stack
     def initialize
       # create ivar to store stack here!
@@ -42,7 +44,35 @@ class Stack
 
   class Map
 
+    attr_accessor :array
+
     def initialize
+      @array = []
     end
 
+    def assign(key, value)
+      @array << [key, value] if @array.none? { |arr| arr[0] == key }
+      @array = @array.map do |arr|
+        arr[0] == key ? [key, value] : arr
+      end
+    end
+
+    def lookup(key)
+      @array.select { |arr| arr[0] == key }
+    end
+
+    def remove(key)
+      @array.each { |arr| @array.delete(arr) if arr[0] == key }
+    end
+
+    def show
+      @array
+    end
   end
+
+  # if __FILE__ == $PROGRAM_NAME
+  #   new_map = Map.new
+  #   new_map.array = [["a", 1], ["b", 2], ["c", 3]]
+  #   # debugger
+  #   new_map.assign("c", 4)
+  # end
