@@ -54,7 +54,7 @@ class Simon
   end
 
   def round_success_message
-    puts "Successful round"
+    puts "Successful round!"
   end
 
   def game_over_message
