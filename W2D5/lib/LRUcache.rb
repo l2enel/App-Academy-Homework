@@ -40,5 +40,9 @@ class LRUCache
 
     private
     # helper methods go here!
-
   end
+
+  # add O(n)
+  # count O(1)
+  # show O(1)
+  #
